@@ -10,6 +10,6 @@ job_name=$(echo $1 | \
 std_unix_time_now=$(date +%s)
 interval_seconds=$((std_unix_time_now - last_pushed))
 
-if [ $interval_seconds -gt 60 ]; then
+if [ ${interval_seconds} -gt ${PUSHGATEWAY_TIMEOUT:-60} ]; then
     curl -s -X DELETE ${PUSHGATEWAY_URL}/metrics/job/${job_name} && echo "${job_name} pushed ${interval_seconds} seconds ago, deleted"
 fi
