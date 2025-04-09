@@ -1,3 +1,4 @@
+# docker buildx build --platform linux/amd64,linux/arm64 -t vpalmisano/pushgateway-cleanup . --push
 FROM debian:bookworm-slim
 
 RUN apt-get update \
